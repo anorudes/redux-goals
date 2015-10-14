@@ -2,7 +2,7 @@ import React from 'react';
 import DocumentMeta from 'react-document-meta';
 
 const metaData = {
-  title: 'Home Page',
+  title: 'About Page',
   description: '',
   canonical: '',
   meta: {
@@ -13,9 +13,9 @@ const metaData = {
   },
 };
 
-export const Home = () => (
+export const Contact = () => (
   <div>
     <DocumentMeta {...metaData} />
-    Home page
+    Contact Page
   </div>
 );

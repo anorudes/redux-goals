@@ -1,0 +1,16 @@
+:local(.styles) {
+  position: relative;
+  margin-top: -2px;
+  .header__navbar {
+    a {
+      width: 100%;
+      display: inline-block;
+      transform: translateZ(0);
+      &.active {
+        background: #868383 !important;
+        opacity: 1 !important;
+        color: white !important;
+      }
+    }
+  }
+}

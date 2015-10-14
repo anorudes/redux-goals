@@ -1,20 +1,32 @@
-var webpack = require('webpack');
-var WebpackDevServer = require('webpack-dev-server');
-var config = require('./webpack.config');
+var http = require('http');
+var express = require('express');
+var app = express();
 
-var openInEditor = require('express-open-in-editor');
+app.use(require('morgan')('short'));
 
-new WebpackDevServer(webpack(config), {
-  publicPath: config.output.publicPath,
-  hot: true,
-  historyApiFallback: true,
-  setup: function (app) {
-    app.use(openInEditor({cmd: 'sublime'}))
-  }
-}).listen(3000, 'localhost', function (err, result) {
-  if (err) {
-    console.log(err);
-  }
+(function initWebpack() {
+  var webpack = require('webpack');
+  var webpackConfig = require('./webpack.config');
+  var compiler = webpack(webpackConfig);
 
-  console.log('Listening at localhost:3000');
+  app.use(require('webpack-dev-middleware')(compiler, {
+    noInfo: true, publicPath: webpackConfig.output.publicPath
+  }));
+
+  app.use(require('webpack-hot-middleware')(compiler, {
+    log: console.log, path: '/__webpack_hmr', heartbeat: 10 * 1000
+  }));
+})();
+
+app.get('/', function root(req, res) {
+  res.sendFile(__dirname + '/index.html');
 });
+
+if (require.main === module) {
+  var server = http.createServer(app);
+  server.listen(process.env.PORT || 3000, function onListen() {
+    var address = server.address();
+    console.log('Listening on: %j', address);
+    console.log(' -> that probably means: http://localhost:%d', address.port);
+  });
+}

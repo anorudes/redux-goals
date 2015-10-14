@@ -1,2 +1,3 @@
-export { Simple } from './Simple';
+export { Header } from './Header';
+export { Footer } from './Footer';
 
