@@ -13,13 +13,12 @@ const metaData = {
     },
   },
 };
-
 export default class About extends Component {
   render() {
     return (
       <div>
         <DocumentMeta {...metaData} />
-        About Page
+        About Page test
       </div>
     );
   }

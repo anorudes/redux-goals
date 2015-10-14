@@ -16,7 +16,22 @@ module.exports = {
     path: path.join(__dirname, '/dist/'),
     publicPath: '/dist/'
   },
-
+  babel: {
+    plugins: [
+      // in case you are using React, this plugin should be applied
+      // before babel-plugin-source-wrapper
+      // otherwise component names will not to be shown propertly
+      require('babel-plugin-react-display-name'),
+      require('babel-plugin-source-wrapper').configure({
+        // webpack sends absolute paths to plugins
+        // but we need paths relative to project root
+        basePath: 'C:\\xamppN\htdocs\\inSRC-redux\\',
+    
+        // inject runtime in instrumented sources
+        runtime: true
+      })
+    ]
+  },
   plugins: [
     new ExtractTextPlugin('bundle.css'),
     new webpack.optimize.OccurenceOrderPlugin(),

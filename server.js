@@ -1,6 +1,7 @@
 var http = require('http');
 var express = require('express');
 var app = express();
+var openInEditor = require('express-open-in-editor');
 
 app.use(require('morgan')('short'));
 
@@ -9,6 +10,8 @@ app.use(require('morgan')('short'));
   var webpackConfig = require('./webpack.config');
   var compiler = webpack(webpackConfig);
 
+  app.use(openInEditor({cmd: 'sublime'}))
+
   app.use(require('webpack-dev-middleware')(compiler, {
     noInfo: true, publicPath: webpackConfig.output.publicPath
   }));
@@ -16,6 +19,8 @@ app.use(require('morgan')('short'));
   app.use(require('webpack-hot-middleware')(compiler, {
     log: console.log, path: '/__webpack_hmr', heartbeat: 10 * 1000
   }));
+  
+  app.use(express.static(__dirname + '/'));
 })();
 
 app.get('/', function root(req, res) {
