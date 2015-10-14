@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
+
 import DocumentMeta from 'react-document-meta';
 
 const metaData = {
@@ -13,9 +14,13 @@ const metaData = {
   },
 };
 
-export const About = () => (
-  <div>
-    <DocumentMeta {...metaData} />
-    About Page
-  </div>
-);
+export default class About extends Component {
+  render() {
+    return (
+      <div>
+        <DocumentMeta {...metaData} />
+        About Page
+      </div>
+    );
+  }
+}

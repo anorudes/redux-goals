@@ -1,21 +1,11 @@
-import React from 'react';
-import DocumentMeta from 'react-document-meta';
+import React, { Component } from 'react';
 
-const metaData = {
-  title: 'About Page',
-  description: '',
-  canonical: '',
-  meta: {
-    charset: 'utf-8',
-    name: {
-      keywords: 'react,meta,document,html,tags',
-    },
-  },
-};
-
-export const Contact = () => (
-  <div>
-    <DocumentMeta {...metaData} />
-    Contact Page
-  </div>
-);
+export default class Contact extends Component {
+  render() {
+    return (
+      <div>
+        Contact Page
+      </div>
+    );
+  }
+}

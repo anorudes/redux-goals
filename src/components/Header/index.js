@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 /* component styles */
 import styles from './styles';
 
-export const Header = () => (
+export default () => (
   <nav className={`${styles} navbar navbar-default`}>
     <div className="container">
       <div className="navbar-header">

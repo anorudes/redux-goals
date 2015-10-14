@@ -7,7 +7,7 @@ import 'style!./styles/app.scss';
 
 import { Header, Footer } from 'components';
 
-export class App extends Component {
+export default class App extends Component {
   static propTypes = {
     children: React.PropTypes.any,
   }

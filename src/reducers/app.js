@@ -2,7 +2,7 @@ const initialState = {
   activePage: 'home',
 };
 
-export function simple(state = initialState, action) {
+export function app(state = initialState, action) {
   switch (action.type) {
   case 'CHANGE':
     return {
