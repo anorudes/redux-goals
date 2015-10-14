@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 import { simple } from './simple';
 
 const rootReducer = combineReducers({
-  items
+  simple
 });
 
 export default rootReducer;

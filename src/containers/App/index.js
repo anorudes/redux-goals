@@ -22,29 +22,13 @@ const metaData = {
 };
 
 export const App = (props) => (
-  <section>
-    <DocumentMeta {...metaData} />
-    <Header />
-    <div className="container">
-      <div className="row">
-        <div className="col-sm-6 col-ls-6">
-          <Typography />
-        </div>
-        <div className="col-sm-6 col-ls-6">
-          <h1>Router examples:</h1>
-          <div className="btn-group" role="group" aria-label="...">
-            <Link to={`/home/`}>
-              <button type="button" className="btn btn-default">Home</button>
-            </Link>
-            {' '}
-            <Link to={`/list/`}>
-              <button type="button" className="btn btn-default">List</button>
-            </Link>
-          </div>
-          {props.children}
-        </div>
-      </div>
-    </div>
-    <Footer />
-  </section>
+  <div>
+    <header>
+    </header>
+    <main>
+      main
+    </main>
+    <footer>
+    </footer>
+  </div>
 );
