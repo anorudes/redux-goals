@@ -6,7 +6,6 @@ import 'bootstrap-webpack';
 import 'style!./styles/app.scss';
 
 import { Header, Footer } from 'components';
-import { Home } from 'containers';
 
 export class App extends Component {
   static propTypes = {

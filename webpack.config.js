@@ -53,7 +53,7 @@ module.exports = {
       loader: "url?limit=10000&minetype=image/svg+xml"
     }, {
       test: /\.js$/,
-      loaders: ['react-hot', 'babel'],
+      loaders: ['react-hot', 'babel?stage=0&loose[]=es6.modules'],
       exclude: /node_modules/
     }, {
       test: /\.scss$/,
