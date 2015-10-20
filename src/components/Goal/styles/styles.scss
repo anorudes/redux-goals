@@ -1,0 +1,16 @@
+:local(.styles) {
+  position: relative;
+  border-radius: 12px;
+  display: inline-block;
+  padding: 10px;
+  background: #1da9d6;
+  margin-right: 25px;
+  color: white;
+  cursor: pointer;
+  border: 1px solid transparent;
+  &.active {
+    background: white;
+    border: 1px solid black;
+    color: black;
+  }
+}

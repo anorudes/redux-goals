@@ -1,24 +1,14 @@
 import React, { Component } from 'react';
 
-import DocumentMeta from 'react-document-meta';
-
-const metaData = {
-  title: 'Home Page',
-  description: '',
-  canonical: '',
-  meta: {
-    charset: 'utf-8',
-    name: {
-      keywords: 'react,meta,document,html,tags',
-    },
-  },
-};
+import { EditGoalPanel, Goals } from 'components';
 
 export default class Home extends Component {
   render() {
     return (
       <div>
-        Home Page
+        <h1>Home Page</h1>
+        <Goals />
+        <EditGoalPanel />
       </div>
     );
   }

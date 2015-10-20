@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
-import { app } from './app';
+import { goals } from './goals';
 
 const rootReducer = combineReducers({
-  app
+  goals,
 });
 
 export default rootReducer;

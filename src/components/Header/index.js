@@ -24,9 +24,6 @@ export default () => (
           <li>
             <Link to="/about" activeClassName="active">About</Link>
           </li>
-          <li>
-            <Link to="/contact" activeClassName="active">Contact</Link>
-          </li>
         </ul>
       </div>
     </div>
