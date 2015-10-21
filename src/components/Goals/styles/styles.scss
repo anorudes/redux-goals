@@ -1,4 +1,7 @@
+@import '../../../tools/scss/config';
+
 :local(.styles) {
   position: relative;
+  width: calc(100% - 300px);
   padding-top: 20px;
 }

@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAIQ,4GAAoG,CCF5G,IAAK,CACH,WAAW,CAAE,oBAAoB,CACjC,WAAW,CAAE,GAAG,CAGlB,iBAKG,CACD,WAAW,CAAE,GAAG,CAGlB,CAAE,CACA,SAAS,CAAE,IAAI,CCZjB,aAAc,CACZ,QAAQ,CAAE,QAAQ",
-"sources": ["fonts/roboto.scss","typography.scss","app.scss"],
-"names": [],
-"file": "app.css"
-}

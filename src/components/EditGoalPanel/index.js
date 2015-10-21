@@ -8,12 +8,19 @@ import styles from './styles';
 export default class EditGoalPanel extends Component {
   static propTypes = {
     dispatch: React.PropTypes.func,
+    items: React.PropTypes.array,
+    activeItem: React.PropTypes.numb,
   }
 
   render() {
+    const { items, activeItem } = this.props;
+    const item = items[activeItem];
+
     return (
       <div className={styles}>
-        Edit Panel
+        <span className="text">id: {activeItem}</span>
+        <input type="text" defaultValue={item.text} />
+        <button>Save</button>
       </div>
     );
   }
