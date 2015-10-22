@@ -12,7 +12,7 @@ export default class Goal extends Component {
     index: React.PropTypes.number,
   }
 
-  _open() {
+  _handleClick() {
     const { index, open } = this.props;
     open(index);
   }
@@ -21,7 +21,7 @@ export default class Goal extends Component {
     const activeClass = this.props.active ? 'active' : '';
 
     return (
-      <div className={`${styles} ${activeClass}`} onClick={::this._open}>
+      <div className={`${styles} ${activeClass}`} onClick={::this._handleClick}>
         {this.props.item.text}
       </div>
     );
