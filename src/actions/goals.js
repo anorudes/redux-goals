@@ -1,3 +1,5 @@
+import { store } from '../index.js';
+
 export function add(text) {
   return {
     type: 'ADD',
@@ -35,4 +37,10 @@ export function loadedItems(items) {
   };
 }
 
+export const fetchItems = () =>
+  fetch('/data/items.json')
+    .then(response => response.json());
 
+export const loadItems = () =>
+  fetchItems()
+    .then(data => store.dispatch(loadedItems(data)));

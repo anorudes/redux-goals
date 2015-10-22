@@ -6,12 +6,7 @@ import { Router, Redirect } from 'react-router';
 import configureStore from './store/configureStore';
 import routes from './routes';
 
-import { fetchItems } from './api/index.js';
-
-const store = configureStore();
-
-/* load all items */
-fetchItems(store.dispatch);
+export const store = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>

@@ -7,6 +7,8 @@ import { Goal } from 'components';
 /* component styles */
 import styles from './styles';
 
+import { loadItems } from 'actions/goals.js';
+
 import * as actionCreators from 'actions/goals';
 
 @connect(state => state.goals)
@@ -20,6 +22,10 @@ export default class Goals extends Component {
   constructor(props) {
     super(props);
     this.actions = bindActionCreators(actionCreators, this.props.dispatch);
+  }
+
+  componentDidMount() {
+    loadItems();
   }
 
   render() {
