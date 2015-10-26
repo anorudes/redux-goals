@@ -7,7 +7,7 @@ import Goal from 'components/Goal';
 /* component styles */
 import styles from './styles';
 
-import { loadItems } from 'actions/goals.js';
+import { loadGoals } from 'actions/goals.js';
 
 import * as actionCreators from 'actions/goals';
 
@@ -25,7 +25,7 @@ export default class Goals extends Component {
   }
 
   componentDidMount() {
-    loadItems();
+    loadGoals();
   }
 
   render() {

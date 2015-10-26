@@ -1,17 +1,17 @@
 import { store } from '../index.js';
 import{ createAction } from 'redux-actions';
 
-export const add = createAction('ADD');
-export const del = createAction('DELETE');
-export const open = createAction('OPEN');
-export const save = createAction('SAVE');
-export const loadedItems = createAction('LOADED_ITEMS');
+export const add = createAction('ADD_GOAL');
+export const del = createAction('DELETE_GOAL');
+export const open = createAction('OPEN_GOAL');
+export const save = createAction('SAVE_GOAL');
+export const loadedGoals = createAction('LOADED_GOALS');
 export const toggleAdd = createAction('ADD_GOAL_TOGGLE');
 
-export const fetchItems = () =>
-  fetch('/data/items.json')
+export const fetchGoals = () =>
+  fetch('/data/goals.json')
     .then(response => response.json());
 
-export const loadItems = () =>
-  fetchItems()
-    .then(data => store.dispatch(loadedItems(data)));
+export const loadGoals = () =>
+  fetchGoals()
+    .then(data => store.dispatch(loadedGoals(data)));

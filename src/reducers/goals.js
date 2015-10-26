@@ -16,19 +16,19 @@ export const goals = handleActions({
     showAddGoal: !state.showAddGoal,
   }),
 
-  'LOADED_ITEMS': (state, action) => ({
+  'LOADED_GOALS': (state, action) => ({
     ...state,
     activeItem: state.activeItem,
     items: [...action.payload],
   }),
 
-  'OPEN': (state, action) => ({
+  'OPEN_GOAL': (state, action) => ({
     ...state,
     activeItem: action.payload,
     items: [...state.items],
   }),
 
-  'ADD': (state, action) => ({
+  'ADD_GOAL': (state, action) => ({
     ...state,
     items: [
       ...state.items,
@@ -38,7 +38,7 @@ export const goals = handleActions({
     ],
   }),
 
-  'SAVE': (state, action) => u({
+  'SAVE_GOAL': (state, action) => u({
     items: { [action.payload.index]: {
       text: action.payload.text,
     }},
