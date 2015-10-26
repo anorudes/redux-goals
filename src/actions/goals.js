@@ -37,6 +37,13 @@ export function loadedItems(items) {
   };
 }
 
+
+export function toggleAdd() {
+  return {
+    type: 'ADD_GOAL_TOGGLE',
+  };
+}
+
 export const fetchItems = () =>
   fetch('/data/items.json')
     .then(response => response.json());

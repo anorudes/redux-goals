@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { Goal } from 'components';
+import Goal from 'components/Goal';
 
 /* component styles */
 import styles from './styles';

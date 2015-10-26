@@ -1,0 +1,15 @@
+@import '../../../tools/scss/config';
+
+:local(.styles) {
+  position: relative;
+  width: calc(100% - 300px);
+  padding: 20px 0 15px 0;
+  border-bottom: 1px solid black;
+  .plus {
+    font-size: rem(40px);
+    font-weight: bold;
+    margin-bottom: -10px;
+    cursor: pointer;
+    color: $goalsHeaderPlusColor;
+  }
+}

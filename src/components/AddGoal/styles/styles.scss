@@ -1,0 +1,38 @@
+@import '../../../tools/scss/config';
+
+:local(.styles) {
+  position: relative;
+  animation: .6s showAddGoal ease-in-out forwards;
+  margin-top: -10px;
+  
+  input[type="text"] {
+    padding-left: 10px;
+    height: 28px;
+  }
+  input[type='button'] {
+    @include transition(.2s);
+    @include brightness(1.1);
+
+    width: 100px;
+    height: 28px;
+    transition: all .25s ease;
+    color: $goalsAddButtonColor;
+    border: none;
+    border-radius: 0;
+    background: $goalEditPanelButtonBackgroundColor;
+  }
+  .close {
+    font-size: rem(20px);
+    font-weight: bold;
+    position: absolute;
+    display: inline-block;
+    margin-top: -25px;
+    color: $goalsHeaderCloseColor;
+    opacity: 1;
+  }
+}
+
+@keyframes showAddGoal {
+  0%{ top: 10px; opacity: 0; }
+  100%{ top: 0; opacity: 1; }
+}

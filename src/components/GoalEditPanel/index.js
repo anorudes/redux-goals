@@ -8,7 +8,7 @@ import * as actionCreators from 'actions/goals';
 import styles from './styles';
 
 @connect(state => state.goals)
-export default class EditGoalPanel extends Component {
+export default class GoalEditPanel extends Component {
   static propTypes = {
     dispatch: React.PropTypes.func,
     items: React.PropTypes.array,
@@ -18,6 +18,12 @@ export default class EditGoalPanel extends Component {
   constructor(props) {
     super(props);
     this.actions = bindActionCreators(actionCreators, this.props.dispatch);
+  }
+
+  componentDidUpdate() {
+    const { items, activeItem } = this.props;
+    const item = items[activeItem];
+    this.refs.text.value = item.text;
   }
 
   _handleClick() {
@@ -31,6 +37,7 @@ export default class EditGoalPanel extends Component {
 
     return (
       <div className={styles}>
+        <h2>Edit Panel</h2>
         <span className="text">id: {activeItem}</span>
         <input type="text" ref="text" defaultValue={item.text} />
         <button onClick={::this._handleClick}>Save</button>
