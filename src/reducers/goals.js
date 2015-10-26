@@ -1,4 +1,5 @@
 import u from 'updeep';
+import{ handleActions } from 'redux-actions';
 
 const initialState = {
   showAdd: false,
@@ -9,53 +10,37 @@ const initialState = {
   }],
 };
 
-export function goals(state = initialState, action) {
-  switch (action.type) {
-  case 'SHOW_ADD_GOAL':
-    return {
-      ...state,
-      showAddGoal: true,
-    };
+export const goals = handleActions({
+  'ADD_GOAL_TOGGLE': (state) => ({
+    ...state,
+    showAddGoal: !state.showAddGoal,
+  }),
 
-  case 'ADD_GOAL_TOGGLE':
-    return {
-      ...state,
-      showAddGoal: !state.showAddGoal,
-    };
+  'LOADED_ITEMS': (state, action) => ({
+    ...state,
+    activeItem: state.activeItem,
+    items: [...action.payload],
+  }),
 
-  case 'LOADED_ITEMS':
-    return {
-      ...state,
-      activeItem: state.activeItem,
-      items: [...action.items],
-    };
+  'OPEN': (state, action) => ({
+    ...state,
+    activeItem: action.payload,
+    items: [...state.items],
+  }),
 
-  case 'OPEN':
-    return {
-      ...state,
-      activeItem: action.index,
-      items: [...state.items],
-    };
+  'ADD': (state, action) => ({
+    ...state,
+    items: [
+      ...state.items,
+      {
+        text: action.payload,
+      },
+    ],
+  }),
 
-  case 'ADD':
-    return {
-      ...state,
-      items: [
-        ...state.items,
-        {
-          text: action.text,
-        },
-      ],
-    };
-
-  case 'SAVE':
-    return u({
-      items: { [action.index]: {
-        text: action.text,
-      }},
-    }, state);
-
-  default:
-    return state;
-  }
-}
+  'SAVE': (state, action) => u({
+    items: { [action.payload.index]: {
+      text: action.payload.text,
+    }},
+  }, state),
+}, initialState);

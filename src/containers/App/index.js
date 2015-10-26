@@ -5,7 +5,8 @@ import 'bootstrap-webpack';
 /* global styles */
 import 'style!./styles/app.scss';
 
-import { Header, Footer } from 'components';
+import Header from 'components/Header';
+import Footer from 'components/Footer';
 
 export default class App extends Component {
   static propTypes = {

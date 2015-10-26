@@ -27,7 +27,10 @@ export default class GoalEditPanel extends Component {
   }
 
   _handleClick() {
-    this.actions.save(this.props.activeItem, this.refs.text.value);
+    this.actions.save({
+      index: this.props.activeItem,
+      text: this.refs.text.value,
+    });
   }
 
   render() {

@@ -26,6 +26,7 @@ export default class AddGoal extends Component {
 
   render() {
     const { actions } = this.props;
+
     return (
       <div className={styles}>
         <h2>New item:</h2>
