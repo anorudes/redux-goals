@@ -13,7 +13,7 @@ import * as actionCreators from 'actions/goals';
 export default class GoalsHeader extends Component {
   static propTypes = {
     dispatch: React.PropTypes.func,
-    showAddGoal: React.PropTypes.boolean,
+    showAddGoal: React.PropTypes.bool,
   }
 
   constructor(props) {

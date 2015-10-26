@@ -21,6 +21,7 @@ export default class GoalEditPanel extends Component {
   }
 
   componentDidUpdate() {
+    if (this.props.activeItem === -1) return false;
     const { items, activeItem } = this.props;
     const item = items[activeItem];
     this.refs.text.value = item.text;

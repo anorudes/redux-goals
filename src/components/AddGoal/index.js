@@ -5,7 +5,7 @@ import styles from './styles';
 
 export default class AddGoal extends Component {
   static propTypes = {
-    actions: React.PropTypes.array,
+    actions: React.PropTypes.object,
   }
 
   constructor(props) {
