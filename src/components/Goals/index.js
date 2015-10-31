@@ -33,7 +33,7 @@ export default class Goals extends Component {
     return (
       <div className={styles}>
         {
-          [...items].sort((a, b) => a.pos - b.pos).map((item, index) => (
+          items.sort((a, b) => a.pos - b.pos).map((item, index) => (
               <Goal
                 key={index}
                 id={item.id}
