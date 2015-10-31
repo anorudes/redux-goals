@@ -16,7 +16,7 @@ export default class Goals extends Component {
   static propTypes = {
     dispatch: React.PropTypes.func,
     items: React.PropTypes.array,
-    activeItem: React.PropTypes.number,
+    activeItem: React.PropTypes.object,
   }
 
   constructor(props) {
@@ -30,16 +30,17 @@ export default class Goals extends Component {
 
   render() {
     const { items, activeItem } = this.props;
-
     return (
       <div className={styles}>
         {
-          items.map((item, index) => <Goal
-            key={index}
-            index={index}
-            item={item}
-            active={index === activeItem}
-            open={this.actions.open.bind(this)} />
+          [...items].sort((a, b) => a.pos - b.pos).map((item, index) => (
+              <Goal
+                key={index}
+                id={item.id}
+                item={item}
+                active={index === activeItem}
+                open={this.actions.open.bind(this)} />
+            )
           )
         }
       </div>

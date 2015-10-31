@@ -12,7 +12,7 @@ export default class GoalEditPanel extends Component {
   static propTypes = {
     dispatch: React.PropTypes.func,
     items: React.PropTypes.array,
-    activeItem: React.PropTypes.number,
+    activeItem: React.PropTypes.object,
   }
 
   constructor(props) {
@@ -21,29 +21,34 @@ export default class GoalEditPanel extends Component {
   }
 
   componentDidUpdate() {
-    if (this.props.activeItem === -1) return false;
+    if (this.props.activeItem === null) return false;
     const { items, activeItem } = this.props;
-    const item = items[activeItem];
+    const item = activeItem;
     this.refs.text.value = item.text;
+    this.refs.pos.value = item.pos;
   }
 
   onSaveClick() {
     this.actions.save({
-      index: this.props.activeItem,
+      id: this.props.activeItem.id,
       text: this.refs.text.value,
+      pos: this.refs.pos.value,
     });
   }
 
   render() {
     const { items, activeItem } = this.props;
-    const item = items[activeItem];
-    if (activeItem === -1) return false;
+    const item = activeItem;
+    if (activeItem === null) return false;
 
     return (
       <div className={styles}>
         <h2>Edit Panel</h2>
-        <span className="text">id: {activeItem}</span>
+        <span className="text">id: {activeItem.id}</span>
+        Text:<br />
         <input type="text" ref="text" defaultValue={item.text} />
+        Position:<br />
+        <input type="text" ref="pos" defaultValue={item.pos} />
         <button onClick={::this.onSaveClick}>Save</button>
       </div>
     );

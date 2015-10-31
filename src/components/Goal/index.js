@@ -9,12 +9,12 @@ export default class Goal extends Component {
     item: React.PropTypes.object,
     open: React.PropTypes.func,
     active: React.PropTypes.bool,
-    index: React.PropTypes.number,
+    id: React.PropTypes.number,
   }
 
   onClick() {
-    const { index, open } = this.props;
-    open(index);
+    const { id, open } = this.props;
+    open(id);
   }
 
   render() {
