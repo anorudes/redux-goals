@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
 
+import React, { Component } from 'react';
 /* component styles */
 import styles from './styles';
 
@@ -12,7 +12,7 @@ export default class Goal extends Component {
     index: React.PropTypes.number,
   }
 
-  _handleClick() {
+  onClick() {
     const { index, open } = this.props;
     open(index);
   }
@@ -21,7 +21,7 @@ export default class Goal extends Component {
     const activeClass = this.props.active ? 'active' : '';
 
     return (
-      <div className={`${styles} ${activeClass}`} onClick={::this._handleClick}>
+      <div className={`${styles} ${activeClass}`} onClick={::this.onClick}>
         {this.props.item.text}
       </div>
     );

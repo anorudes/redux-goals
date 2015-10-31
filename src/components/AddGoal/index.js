@@ -12,7 +12,7 @@ export default class AddGoal extends Component {
     super(props);
   }
 
-  _handleClick() {
+  onAddClick() {
     if (this.refs.text.value === '') {
       return false;
     }
@@ -24,15 +24,17 @@ export default class AddGoal extends Component {
     this.refs.text.value = '';
   }
 
-  render() {
-    const { actions } = this.props;
+  onCloseClick() {
+    this.props.actions.toggleAdd();
+  }
 
+  render() {
     return (
       <div className={styles}>
         <h2>New item:</h2>
         <input type="text" defaultValue="" ref="text" />
-        <input type="button" value="Add Goal" onClick={::this._handleClick} />
-        <div className="close" onClick={::actions.toggleAdd}>X</div>
+        <input type="button" value="Add Goal" onClick={::this.onAddClick} />
+        <div className="close" onClick={::this.onCloseClick}>X</div>
       </div>
     );
   }

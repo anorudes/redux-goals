@@ -21,13 +21,17 @@ export default class GoalsHeader extends Component {
     this.actions = bindActionCreators(actionCreators, this.props.dispatch);
   }
 
+  onPlusClick() {
+    this.actions.toggleAdd();
+  }
+
   render() {
     const { showAddGoal } = this.props;
     return (
       <div className={styles}>
       {
         showAddGoal ? <AddGoal actions={this.actions}/>
-                : <div className="plus" onClick={::this.actions.toggleAdd}>+</div>
+                : <div className="plus" onClick={::this.onPlusClick}>+</div>
       }
       </div>
     );

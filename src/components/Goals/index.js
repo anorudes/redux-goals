@@ -34,16 +34,13 @@ export default class Goals extends Component {
     return (
       <div className={styles}>
         {
-          items.map((item, index) => {
-            return (
-              <Goal
-                key={index}
-                index={index}
-                item={item}
-                active={index === activeItem}
-                open={this.actions.open.bind(this)} />
-            );
-          })
+          items.map((item, index) => <Goal
+            key={index}
+            index={index}
+            item={item}
+            active={index === activeItem}
+            open={this.actions.open.bind(this)} />
+          )
         }
       </div>
     );

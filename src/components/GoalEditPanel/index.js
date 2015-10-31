@@ -27,7 +27,7 @@ export default class GoalEditPanel extends Component {
     this.refs.text.value = item.text;
   }
 
-  _handleClick() {
+  onSaveClick() {
     this.actions.save({
       index: this.props.activeItem,
       text: this.refs.text.value,
@@ -44,7 +44,7 @@ export default class GoalEditPanel extends Component {
         <h2>Edit Panel</h2>
         <span className="text">id: {activeItem}</span>
         <input type="text" ref="text" defaultValue={item.text} />
-        <button onClick={::this._handleClick}>Save</button>
+        <button onClick={::this.onSaveClick}>Save</button>
       </div>
     );
   }
