@@ -15,6 +15,30 @@ const getIndex = (items, id) => items.map(x => x.id).indexOf(id);
 const getMaxID = (items) => Math.max(...items.map(({id}) => id));
 const getMaxPos = (items) => Math.max(...items.map(({pos}) => pos));
 
+const changePos = (items, id, pos) => {
+  let sortItems = [...items];
+  let posInc = 0;
+  
+  /* reset pos */
+  items.sort((a, b) => a.pos - b.pos).map((item, index) => {
+    posInc++;
+    sortItems[index].pos = posInc;
+  });
+
+  /* change pos */
+  for (const [index] of sortItems.entries()) {
+    if (sortItems[index].id === id) {
+      sortItems[index].pos = pos;
+    } else {
+      if (sortItems[index].pos >= pos) {
+        posInc++;
+        sortItems[index].pos = sortItems[index].pos + 1;
+      }
+    }
+  }
+  return sortItems;
+};
+
 export const goals = handleActions({
   'ADD_GOAL_TOGGLE': (state) => ({
     ...state,
@@ -45,6 +69,11 @@ export const goals = handleActions({
     ],
   }),
 
+  'CHANGE_GOAL_POS': (state, action) => ({
+    ...state,
+    items: changePos(state.items, action.payload.id, action.payload.pos),
+  }),
+
   'SAVE_GOAL': (state, action) => ({
       ...state,
       activeItem: {
@@ -55,7 +84,6 @@ export const goals = handleActions({
       items: [...state.items].map(item => {
         if (item.id === action.payload.id) {
           item.text = action.payload.text;
-          item.pos = action.payload.pos;
         }
         return item;
       }),

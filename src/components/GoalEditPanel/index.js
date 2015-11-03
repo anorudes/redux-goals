@@ -32,6 +32,9 @@ export default class GoalEditPanel extends Component {
     this.actions.save({
       id: this.props.activeItem.id,
       text: this.refs.text.value,
+    });
+    this.actions.changePos({
+      id: this.props.activeItem.id,
       pos: this.refs.pos.value,
     });
   }
