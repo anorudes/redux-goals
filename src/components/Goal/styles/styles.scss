@@ -1,6 +1,8 @@
 @import '../../../tools/scss/config';
 
 :local(.styles) {
+  @include transition-e(0.3s);
+
   position: relative;
   display: inline-block;
   margin: 0px 15px 10px 0px;
@@ -10,11 +12,19 @@
   border: 1px solid transparent;
   border-radius: 12px;
   background: $goalBackgroundColor;
-  transition: all 0.3s ease;
+  transition: all 0.15s ease;
+  animation: .6s slideUp ease-in-out forwards;
 
   &.active {
     color: $goalActiveBackgroundColor;
     border: 1px solid rgba(0, 0, 0, .4);
     background: white;
   }
+}
+
+@keyframes slideUp {
+  0%{ top: 15px;
+    opacity: 0; }
+  100%{ top: 0px;
+    opacity:1; }
 }

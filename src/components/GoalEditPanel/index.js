@@ -18,14 +18,21 @@ export default class GoalEditPanel extends Component {
   constructor(props) {
     super(props);
     this.actions = bindActionCreators(actionCreators, this.props.dispatch);
+    this.onSaveClick = this.onSaveClick.bind(this);
+    this.onDeleteClick = this.onDeleteClick.bind(this);
   }
 
   componentDidUpdate() {
     if (this.props.activeItem === null) return false;
-    const { items, activeItem } = this.props;
+    const { activeItem } = this.props;
     const item = activeItem;
     this.refs.text.value = item.text;
     this.refs.pos.value = item.pos;
+  }
+
+  onDeleteClick() {
+    this.actions.del(this.props.activeItem.id);
+    this.actions.close();
   }
 
   onSaveClick() {
@@ -40,7 +47,7 @@ export default class GoalEditPanel extends Component {
   }
 
   render() {
-    const { items, activeItem } = this.props;
+    const { activeItem } = this.props;
     const item = activeItem;
     if (activeItem === null) return false;
 
@@ -52,7 +59,8 @@ export default class GoalEditPanel extends Component {
         <input type="text" ref="text" defaultValue={item.text} />
         Position:<br />
         <input type="text" ref="pos" defaultValue={item.pos} />
-        <button onClick={::this.onSaveClick}>Save</button>
+        <button className="add" onClick={this.onSaveClick}>Save</button>
+        <button className="delete" onClick={this.onDeleteClick}>Delete</button>
       </div>
     );
   }

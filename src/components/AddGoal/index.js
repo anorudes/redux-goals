@@ -10,6 +10,8 @@ export default class AddGoal extends Component {
 
   constructor(props) {
     super(props);
+    this.onCloseClick = this.onCloseClick.bind(this);
+    this.onAddClick = this.onAddClick.bind(this);
   }
 
   onAddClick() {
@@ -33,8 +35,8 @@ export default class AddGoal extends Component {
       <div className={styles}>
         <h2>New item:</h2>
         <input type="text" defaultValue="" ref="text" />
-        <input type="button" value="Add Goal" onClick={::this.onAddClick} />
-        <div className="close" onClick={::this.onCloseClick}>X</div>
+        <input type="button" value="Add Goal" onClick={this.onAddClick} />
+        <div className="close" onClick={this.onCloseClick}>X</div>
       </div>
     );
   }

@@ -27,11 +27,20 @@
     transition: all .25s ease;
     border: none;
     border-radius: 6px;
-    color: $goalEditPanelButtonColor;
-    background: $goalEditPanelButtonBackgroundColor;
     &:hover {
       filter: brightness(1.05);
     }
+  }
+
+  .add {
+    color: $goalEditPanelButtonColor;
+    background: $goalEditPanelButtonBackgroundColor;
+  }
+
+  .delete {
+    background: gray;
+    color: white;
+    margin-top: 10px;
   }
 
   input[type='text'] {

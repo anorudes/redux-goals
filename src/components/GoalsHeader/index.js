@@ -19,6 +19,7 @@ export default class GoalsHeader extends Component {
   constructor(props) {
     super(props);
     this.actions = bindActionCreators(actionCreators, this.props.dispatch);
+    this.onPlusClick = this.onPlusClick.bind(this);
   }
 
   onPlusClick() {
@@ -31,7 +32,7 @@ export default class GoalsHeader extends Component {
       <div className={styles}>
       {
         showAddGoal ? <AddGoal actions={this.actions}/>
-                : <div className="plus" onClick={::this.onPlusClick}>+</div>
+                : <div className="plus" onClick={this.onPlusClick}>+</div>
       }
       </div>
     );

@@ -26,6 +26,11 @@ export default class Goal extends Component {
     isDragging: React.PropTypes.bool.isRequired,
   }
 
+  constructor(props) {
+    super(props);
+    this.onClick = this.onClick.bind(this);
+  }
+
   onClick() {
     const { id, open } = this.props;
     open(id);
@@ -37,7 +42,7 @@ export default class Goal extends Component {
     const opacity = isDragging ? 0 : 1;
 
     return connectDragSource(connectDropTarget(
-      <div className={`${styles} ${activeClass}`} onClick={::this.onClick} style={{ opacity }}>
+      <div className={`${styles} ${activeClass}`} onClick={this.onClick} style={{ opacity }}>
         {this.props.item.text}
       </div>
     ));

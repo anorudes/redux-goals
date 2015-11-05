@@ -14,9 +14,8 @@ const initialState = {
 const getIndex = (items, id) => items.map(x => x.id).indexOf(id);
 const getMaxID = (items) => Math.max(...items.map(({id}) => id));
 const getMaxPos = (items) => Math.max(...items.map(({pos}) => pos));
-
 const changePos = (items, id, pos) => {
-  let sortItems = [...items];
+  const sortItems = [...items];
   let posInc = 0;
   
   /* reset pos */
@@ -54,7 +53,11 @@ export const goals = handleActions({
   'OPEN_GOAL': (state, action) => ({
     ...state,
     activeItem: state.items[getIndex(state.items, action.payload)],
-    items: [...state.items],
+  }),
+
+  'CLOSE_GOAL': (state) => ({
+    ...state,
+    activeItem: null,
   }),
 
   'ADD_GOAL': (state, action) => ({
@@ -69,23 +72,36 @@ export const goals = handleActions({
     ],
   }),
 
+  'SAVE_GOAL': (state, action) => ({
+    ...state,
+    activeItem: {
+      ...state.activeItem,
+      id: action.payload.id,
+      text: action.payload.text,
+    },
+    items: [...state.items].map(item => {
+      if (item.id === action.payload.id) {
+        item.text = action.payload.text;
+      }
+      return item;
+    }),
+  }),
+
+  'DELETE_GOAL': (state, action) => ({
+    ...state,
+    items: [
+      ...state.items.slice(0, getIndex(state.items, action.payload)),
+      ...state.items.slice(action.payload + 1),
+    ],
+  }),
+
   'CHANGE_GOAL_POS': (state, action) => ({
     ...state,
+    activeItem: {
+      ...state.activeItem,
+      pos: action.payload.pos,
+    },
     items: changePos(state.items, action.payload.id, action.payload.pos),
   }),
 
-  'SAVE_GOAL': (state, action) => ({
-      ...state,
-      activeItem: {
-        id: action.payload.id,
-        text: action.payload.text,
-        pos: action.payload.pos,
-      },
-      items: [...state.items].map(item => {
-        if (item.id === action.payload.id) {
-          item.text = action.payload.text;
-        }
-        return item;
-      }),
-  }),
 }, initialState);
