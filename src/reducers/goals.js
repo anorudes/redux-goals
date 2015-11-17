@@ -17,7 +17,7 @@ const getMaxPos = (items) => Math.max(...items.map(({pos}) => pos));
 const changePos = (items, id, pos) => {
   const sortItems = [...items];
   let posInc = 0;
-  
+
   /* reset pos */
   items.sort((a, b) => a.pos - b.pos).map((item, index) => {
     posInc++;

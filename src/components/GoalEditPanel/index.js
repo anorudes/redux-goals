@@ -1,23 +1,21 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-
-import { bindActionCreators } from 'redux';
-import * as actionCreators from 'actions/goals';
 
 /* component styles */
 import styles from './styles';
 
-@connect(state => state.goals)
 export default class GoalEditPanel extends Component {
   static propTypes = {
     dispatch: React.PropTypes.func,
     items: React.PropTypes.array,
     activeItem: React.PropTypes.object,
+    save: React.PropTypes.func,
+    close: React.PropTypes.func,
+    changePos: React.PropTypes.func,
+    del: React.PropTypes.func,
   }
 
   constructor(props) {
     super(props);
-    this.actions = bindActionCreators(actionCreators, this.props.dispatch);
     this.onSaveClick = this.onSaveClick.bind(this);
     this.onDeleteClick = this.onDeleteClick.bind(this);
   }
@@ -31,16 +29,16 @@ export default class GoalEditPanel extends Component {
   }
 
   onDeleteClick() {
-    this.actions.del(this.props.activeItem.id);
-    this.actions.close();
+    this.props.del(this.props.activeItem.id);
+    this.props.close();
   }
 
   onSaveClick() {
-    this.actions.save({
+    this.props.save({
       id: this.props.activeItem.id,
       text: this.refs.text.value,
     });
-    this.actions.changePos({
+    this.props.changePos({
       id: this.props.activeItem.id,
       pos: this.refs.pos.value,
     });

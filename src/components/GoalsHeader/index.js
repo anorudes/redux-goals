@@ -1,29 +1,24 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 
 import AddGoal from 'components/AddGoal';
 
 /* component styles */
 import styles from './styles';
 
-import * as actionCreators from 'actions/goals';
-
-@connect(state => state.goals)
 export default class GoalsHeader extends Component {
   static propTypes = {
     dispatch: React.PropTypes.func,
     showAddGoal: React.PropTypes.bool,
+    toggleAdd: React.PropTypes.func,
   }
 
   constructor(props) {
     super(props);
-    this.actions = bindActionCreators(actionCreators, this.props.dispatch);
     this.onPlusClick = this.onPlusClick.bind(this);
   }
 
   onPlusClick() {
-    this.actions.toggleAdd();
+    this.props.toggleAdd();
   }
 
   render() {
@@ -31,7 +26,7 @@ export default class GoalsHeader extends Component {
     return (
       <div className={styles}>
       {
-        showAddGoal ? <AddGoal actions={this.actions}/>
+        showAddGoal ? <AddGoal {...this.props} />
                 : <div className="plus" onClick={this.onPlusClick}>+</div>
       }
       </div>

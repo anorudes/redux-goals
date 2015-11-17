@@ -6,6 +6,8 @@ import styles from './styles';
 export default class AddGoal extends Component {
   static propTypes = {
     actions: React.PropTypes.object,
+    add: React.PropTypes.func,
+    toggleAdd: React.PropTypes.func,
   }
 
   constructor(props) {
@@ -20,14 +22,14 @@ export default class AddGoal extends Component {
     }
 
     // add new goal
-    this.props.actions.add(this.refs.text.value);
+    this.props.add(this.refs.text.value);
 
     // clear input
     this.refs.text.value = '';
   }
 
   onCloseClick() {
-    this.props.actions.toggleAdd();
+    this.props.toggleAdd();
   }
 
   render() {
